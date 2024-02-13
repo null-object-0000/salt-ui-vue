@@ -1,0 +1,60 @@
+{
+  "name": "@snewbie/salt-ui-vue",
+  "private": false,
+  "version": "0.0.1",
+  "description": "A Vue 3 UI library based on SaltUI.",
+  "main": "dist/salt-ui.umd.cjs",
+  "module": "dist/salt-ui.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "author": "null_object_0000",
+  "license": "MIT",
+  "files": [
+    "package.json",
+    "README.md",
+    "LICENSE",
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/salt-ui.js",
+      "require": "./dist/salt-ui.umd.cjs"
+    },
+    "./style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    },
+    "./theme/variables.css": {
+      "import": "./dist/theme/variables.css",
+      "require": "./dist/theme/variables.css"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/null-object-0000/salt-ui-vue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/null-object-0000/salt-ui-vue/issues"
+  },
+  "keywords": [
+    "ui",
+    "ui-components",
+    "salt-ui"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.15"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "@vitejs/plugin-vue": "^5.0.3",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.0",
+    "vite-plugin-dts": "^3.7.2",
+    "vue-tsc": "^1.8.27"
+  }
+}
