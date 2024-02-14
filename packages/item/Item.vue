@@ -1,21 +1,23 @@
 <template>
-    <div class="salt-item" :class="[enabled ? 'enabled' : 'unenabled']" @click="onClick">
-        <div v-if="iconPainter" class="icon-container">
-            <salt-icon class="icon" :name="iconPainter" :style="{ fill: iconColor }"></salt-icon>
+    <salt-ripple-effect :enabled="enabled" mix-blend-mode="exclusion" @click="onClick">
+        <div class="salt-item" :class="[enabled ? 'enabled' : 'unenabled']">
+            <div v-if="iconPainter" class="icon-container">
+                <salt-icon class="icon" :name="iconPainter" :style="{ color: iconColor }"></salt-icon>
+                <span class="spacer"></span>
+            </div>
+            <div class="row">
+                <span class="text">{{ text }} </span>
+                <div class="sub" :style="{ color: subColor }">{{ sub }}</div>
+            </div>
             <span class="spacer"></span>
+            <salt-icon name="chevron-right"></salt-icon>
         </div>
-        <div class="row">
-            <span class="text">{{ text }} </span>
-            <div class="sub" :style="{ color: subColor }">{{ sub }}</div>
-        </div>
-        <span class="spacer"></span>
-        <salt-icon name="chevron-right"></salt-icon>
-    </div>
+    </salt-ripple-effect>
 </template>
   
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SaltIcon } from '../../packages';
+import { SaltIcon, SaltRippleEffect } from '../../packages';
 
 const props = defineProps({
     enabled: {
@@ -67,13 +69,6 @@ const onClick = () => {
     padding: var(--salt-dimen-inner-vertical-padding) var(--salt-dimen-inner-horizontal-padding);
     display: flex;
     align-items: center;
-
-    border-radius: var(--salt-dimen-corner);
-    transition: background-color 0.3s ease;
-}
-
-.salt-item.enabled:active {
-    background-color: var(--salt-color-sub-text);
 }
 
 .salt-item .icon-container {
@@ -82,7 +77,7 @@ const onClick = () => {
 
 .salt-item .icon {
     font-size: 24px;
-    fill: var(--salt-color-hightlight);
+    color: var(--salt-color-hightlight);
 }
 
 .salt-item .spacer {

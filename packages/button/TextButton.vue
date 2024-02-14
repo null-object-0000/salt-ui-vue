@@ -31,8 +31,12 @@ const onClick = () => {
 }
 </script>
   
-<style scoped>
-.salt-basic-button.salt-text-button {
+<style>
+.salt-text-button {
+    width: 100%;
+}
+
+.salt-basic-button.salt-text-button button {
     font-size: var(--salt-text-style-main-font-size);
     line-height: var(--salt-text-style-main-line-height);
     color: #ffffff;

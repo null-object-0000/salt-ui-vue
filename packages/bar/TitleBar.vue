@@ -41,7 +41,7 @@ const onBack = () => {
     font-size: 24px;
     padding: 16px;
 
-    fill: var(--salt-color-text);
+    color: var(--salt-color-text);
 
     position: absolute;
 }

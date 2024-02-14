@@ -1,17 +1,18 @@
 <template>
-    <div class="salt-item-check" :class="[enabled ? 'enabled' : 'unenabled', model ? 'checked' : 'unchecked']"
-        @click="onClick">
-        <salt-icon class="icon" :name="model ? 'check' : 'un-check'"></salt-icon>
-        <span class="spacer"></span>
-        <span class="text">
-            <slot>{{ text }}</slot>
-        </span>
-    </div>
+    <salt-ripple-effect :enabled="enabled" mix-blend-mode="exclusion" @click="onClick">
+        <div class="salt-item-check" :class="[enabled ? 'enabled' : 'unenabled', model ? 'checked' : 'unchecked']">
+            <salt-icon class="icon" :name="model ? 'check' : 'un-check'"></salt-icon>
+            <span class="spacer"></span>
+            <span class="text">
+                <slot>{{ text }}</slot>
+            </span>
+        </div>
+    </salt-ripple-effect>
 </template>
   
 <script setup lang="ts">
 import { ModelRef, ref } from 'vue';
-import { SaltIcon } from '../../packages';
+import { SaltIcon, SaltRippleEffect } from '../../packages';
 
 const model = defineModel() as ModelRef<boolean>
 const props = defineProps({
@@ -46,18 +47,15 @@ const onClick = () => {
     padding: var(--salt-dimen-inner-vertical-padding) var(--salt-dimen-inner-horizontal-padding);
     display: flex;
     align-items: center;
-
-    border-radius: var(--salt-dimen-corner);
-    transition: background-color 0.3s ease;
 }
 
-.salt-item-check.enabled:active {
-    background-color: var(--salt-color-sub-text);
+.salt-item-check.unenabled {
+    opacity: 0.5;
 }
 
 .salt-item-check .icon {
     font-size: 24px;
-    fill: var(--salt-color-hightlight);
+    color: var(--salt-color-hightlight);
 }
 
 .salt-item-check .spacer {
@@ -68,10 +66,6 @@ const onClick = () => {
     font-size: var(--salt-text-style-main-font-size);
     line-height: var(--salt-text-style-main-line-height);
     color: var(--salt-color-text);
-}
-
-.salt-item-check.unenabled {
-    opacity: 0.5;
 }
 
 .salt-item-check.unenabled .text {

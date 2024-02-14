@@ -1,22 +1,24 @@
 <template>
-    <div class="salt-item-switcher" :class="[enabled ? 'enabled' : 'unenabled', model ? 'checked' : 'unchecked']"
-        @click="onClick">
-        <div v-if="iconPainter" class="icon-container">
-            <salt-icon class="icon" :name="iconPainter" :style="{ fill: iconColor }"></salt-icon>
+    <salt-ripple-effect :enabled="enabled" mix-blend-mode="exclusion" @click="onClick">
+        <div class="salt-item-switcher" :class="[enabled ? 'enabled' : 'unenabled', model ? 'checked' : 'unchecked']">
+            <div v-if="iconPainter" class="icon-container">
+                <salt-icon class="icon" :name="iconPainter" :style="{ color: iconColor }"></salt-icon>
+                <span class="spacer"></span>
+            </div>
+            <div class="row">
+                <span class="text">{{ text }} </span>
+                <div class="sub" :style="{ color: subColor }">{{ sub }}</div>
+            </div>
             <span class="spacer"></span>
+            <div class="switch-container"><salt-switch-button class="switch" :model-value="model" :enabled="enabled" />
+            </div>
         </div>
-        <div class="row">
-            <span class="text">{{ text }} </span>
-            <div class="sub" :style="{ color: subColor }">{{ sub }}</div>
-        </div>
-        <span class="spacer"></span>
-        <div class="switch-container"><salt-switch-button class="switch" :model-value="model" :enabled="enabled" /></div>
-    </div>
+    </salt-ripple-effect>
 </template>
   
 <script setup lang="ts">
 import { ModelRef, ref } from 'vue';
-import { SaltSwitchButton, SaltIcon } from '../../packages';
+import { SaltSwitchButton, SaltIcon, SaltRippleEffect } from '../../packages';
 
 const model = defineModel() as ModelRef<boolean>
 const props = defineProps({
@@ -67,13 +69,6 @@ const onClick = () => {
     padding: var(--salt-dimen-inner-vertical-padding) var(--salt-dimen-inner-horizontal-padding);
     display: flex;
     align-items: center;
-
-    border-radius: var(--salt-dimen-corner);
-    transition: background-color 0.3s ease;
-}
-
-.salt-item-switcher.enabled:active {
-    background-color: var(--salt-color-sub-text);
 }
 
 .salt-item-switcher .icon-container {
@@ -82,7 +77,7 @@ const onClick = () => {
 
 .salt-item-switcher .icon {
     font-size: 24px;
-    fill: var(--salt-color-hightlight);
+    color: var(--salt-color-hightlight);
 }
 
 .salt-item-switcher .spacer {
@@ -102,7 +97,7 @@ const onClick = () => {
     color: var(--salt-color-sub-text);
 }
 
-.salt-item-switcher .switch-container{
+.salt-item-switcher .switch-container {
     width: 100px;
 }
 

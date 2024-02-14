@@ -39,6 +39,7 @@ import SaltBasicDialog from './dialog/BasicDialog.vue';
 import SlatDialogTitle from './dialog/DialogTitle.vue';
 
 import SaltIcon from './icon/Icon.vue';
+import SaltRippleEffect from './ripple/RippleEffect.vue';
 
 export {
     SaltTitleBar, SaltBottomBar, SaltBottomBarItem,
@@ -48,7 +49,7 @@ export {
     SaltRoundedColumn,
     SaltUiLogo,
     SaltYesDialog, SaltYesNoDialog, SaltInputDialog, SaltBasicDialog, SlatDialogTitle,
-    SaltIcon
+    SaltIcon, SaltRippleEffect
 };
 
 const components = [
@@ -59,7 +60,7 @@ const components = [
     SaltRoundedColumn,
     SaltUiLogo,
     SaltYesDialog, SaltYesNoDialog, SaltInputDialog, SaltBasicDialog, SlatDialogTitle,
-    SaltIcon
+    SaltIcon, SaltRippleEffect
 ];
 
 const SaltUI = {

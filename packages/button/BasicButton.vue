@@ -1,10 +1,16 @@
 <template>
-    <button class="salt-basic-button" :style="{ backgroundColor }" @click="onClick">
-        <slot>{{ content }}</slot>
-    </button>
+    <div class="salt-basic-button" @click="onClick">
+        <salt-ripple-effect mix-blend-mode="screen">
+            <button :style="{ backgroundColor }">
+                <slot>{{ content }}</slot>
+            </button>
+        </salt-ripple-effect>
+    </div>
 </template>
   
 <script setup lang="ts">
+import { SaltRippleEffect } from '../../packages'
+
 defineProps({
     backgroundColor: {
         type: String,
@@ -21,20 +27,13 @@ const emit = defineEmits(['click'])
 const onClick = () => {
     emit('click')
 }
-
 </script>
   
 <style scoped>
-.salt-basic-button {
+.salt-basic-button button {
     width: 100%;
     border-radius: var(--salt-dimen-corner);
     background-color: var(--salt-color-hightlight);
     padding: var(--salt-dimen-content-padding);
-
-    transition: background-color 0.3s ease;
-}
-
-.salt-basic-button:active {
-    background-color: var(--salt-color-sub-text);
 }
 </style>

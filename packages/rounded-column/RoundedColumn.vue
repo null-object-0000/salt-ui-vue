@@ -33,6 +33,8 @@ defineProps({
     margin: calc(var(--salt-dimen-outer-vertical-padding) * 2) var(--salt-dimen-outer-horizontal-padding);
     border-radius: var(--salt-dimen-corner);
     background-color: var(--salt-color-sub-background);
+
+    overflow: hidden;
 }
 
 .salt-rounded-column.outer {

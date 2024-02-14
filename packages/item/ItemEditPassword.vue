@@ -38,6 +38,6 @@ const hidden = ref(true)
 .salt-item-edit-password {}
 
 .salt-item-edit-password .icon {
-    fill: var(--salt-color-sub-text);
+    color: var(--salt-color-sub-text);
 }
 </style>

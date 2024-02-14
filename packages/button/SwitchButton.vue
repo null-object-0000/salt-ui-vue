@@ -33,7 +33,7 @@ const onClick = () => {
     padding: 5px;
     position: relative;
     background-color: rgba(140, 140, 140, 0.1);
-    
+
     transition: background-color 0.3s ease;
 }
 
@@ -61,7 +61,7 @@ const onClick = () => {
 }
 
 .salt-switch-button.checked .handle {
-    transform: translateX(20px); 
+    transform: translateX(20px);
 }
 
 .salt-switch-button.unenabled {

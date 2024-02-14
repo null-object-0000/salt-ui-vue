@@ -46,12 +46,18 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  },
   "dependencies": {
     "vue": "^3.4.15"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
     "@vitejs/plugin-vue": "^5.0.4",
+    "cz-git": "^1.8.0",
     "typescript": "^5.2.2",
     "vite": "^5.1.1",
     "vite-plugin-dts": "^3.7.2",

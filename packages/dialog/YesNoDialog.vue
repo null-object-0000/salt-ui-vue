@@ -2,7 +2,7 @@
     <salt-basic-dialog :open="open" class="salt-yes-no-dialog">
         <slat-dialog-title :text="title"></slat-dialog-title>
 
-        <solt><salt-item-text :text="content"></salt-item-text></solt>
+        <slot><salt-item-text :text="content"></salt-item-text></slot>
 
         <form class="action-container" method="dialog">
             <salt-text-button class="cancel" @click="onCancel" :text="cancelText"></salt-text-button>
