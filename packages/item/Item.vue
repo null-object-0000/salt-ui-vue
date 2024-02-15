@@ -73,11 +73,14 @@ const onClick = () => {
 
 .salt-item .icon-container {
     width: 48px;
+    display: flex;
+    align-items: center;
 }
 
 .salt-item .icon {
     font-size: 24px;
     color: var(--salt-color-hightlight);
+    align-self: center;
 }
 
 .salt-item .spacer {

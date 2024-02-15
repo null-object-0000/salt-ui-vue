@@ -1,10 +1,11 @@
 <template>
   <div class="header">
-    <salt-title-bar text="我的" @back="onBack" />
+    <salt-title-bar @back="onBack" />
   </div>
 
   <div class="content">
-    <salt-item-outer-large-title text="Hello, SaltUI">
+    <salt-item-outer-large-title>
+      <template #text>Hello, SaltUI<sup class="vue-superscript">Vue 3.0</sup></template>
       SaltUI（UI for Salt Player） 是提取自椒盐音乐的 UI 风格组件，用以快速生成椒盐音乐风格用户界面。本库将会广泛用以椒盐系列 App 开发，以达到快速开发目的
     </salt-item-outer-large-title>
 
@@ -129,5 +130,17 @@ const onBack = () => {
   left: 0;
   right: 0;
   z-index: 1;
+}
+
+.vue-superscript {
+  font-size: var(--salt-text-style-sub-font-size);
+  line-height: var(--salt-text-style-sub-line-height);
+
+  position: relative;
+  right: -0.5em;
+  background: -webkit-linear-gradient(315deg, #42d392 25%, #647eff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 </style>

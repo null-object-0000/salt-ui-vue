@@ -1,6 +1,10 @@
 <template>
   <div class="salt-item-outer-large-title">
-    <div class="text">{{ text }}</div>
+    <div class="text">
+      <slot name="text">
+        {{ text }}
+      </slot>
+    </div>
     <div class="spacer"></div>
     <div class="sub">
       <slot>{{ sub }}</slot>
@@ -12,7 +16,7 @@
 defineProps({
   text: {
     type: String,
-    required: true
+    required: false
   },
   sub: {
     type: String,

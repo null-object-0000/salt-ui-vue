@@ -73,11 +73,14 @@ const onClick = () => {
 
 .salt-item-switcher .icon-container {
     width: 48px;
+    display: flex;
+    align-items: center;
 }
 
 .salt-item-switcher .icon {
     font-size: 24px;
     color: var(--salt-color-hightlight);
+    align-self: center;
 }
 
 .salt-item-switcher .spacer {
