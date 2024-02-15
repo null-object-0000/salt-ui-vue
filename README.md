@@ -2,7 +2,7 @@
 
 <a href="https://www.npmjs.com/package/@snewbie/salt-ui-vue"><img src="https://img.shields.io/npm/v/@snewbie/salt-ui-vue.svg?sanitize=true" alt="Version"></a> <a  href="https://www.npmjs.com/package/@snewbie/salt-ui-vue"><img src="https://img.shields.io/npm/l/@snewbie/salt-ui-vue.svg?sanitize=true" alt="License"></a>
 
-A Vue 3 UI library based on [SaltUI](https://github.com/Moriafly/SaltUI).
+一个 [Salt UI](https://github.com/Moriafly/SaltUI) 风格的移动端 Vue 3 组件库。
 
 # 安装
 

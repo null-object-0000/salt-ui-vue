@@ -3,7 +3,7 @@
     <div class="salt-item-edit" :class="[$slots.default ? 'has-slot' : null]">
         <div class="text">
             <input :type="type" ref="inputRef" v-model="model" :readonly="readOnly" :placeholder="hint"
-                @focus="fixInputPosition" @blur="restoreInputPosition" @change="onChange" />
+                @focus="fixInputPosition" @blur="restoreInputPosition" @change="(event: Event) => emit('change', event)" />
         </div>
         <div class="action">
             <slot></slot>
@@ -43,10 +43,6 @@ defineProps({
 })
 
 const emit = defineEmits(['change'])
-
-const onChange = (event: Event) => {
-    emit('change', event)
-}
 
 const inputRef = ref<HTMLInputElement | null>(null)
 const lastTime = ref<number>(0)

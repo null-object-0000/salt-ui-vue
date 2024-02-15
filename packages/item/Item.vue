@@ -1,25 +1,25 @@
 <template>
-    <salt-ripple-effect :enabled="enabled" mix-blend-mode="exclusion" @click="onClick">
+    <salt-ripple-effect :enabled="enabled" mix-blend-mode="exclusion"
+        @click="(event: MouseEvent) => { if (enabled) emit('click', event) }">
         <div class="salt-item" :class="[enabled ? 'enabled' : 'unenabled']">
             <div v-if="iconPainter" class="icon-container">
                 <salt-icon class="icon" :name="iconPainter" :style="{ color: iconColor }"></salt-icon>
-                <span class="spacer"></span>
+                <span class="spacer-width"></span>
             </div>
             <div class="row">
                 <span class="text">{{ text }} </span>
                 <div class="sub" :style="{ color: subColor }">{{ sub }}</div>
             </div>
-            <span class="spacer"></span>
+            <span class="spacer-width"></span>
             <salt-icon name="chevron-right"></salt-icon>
         </div>
     </salt-ripple-effect>
 </template>
   
 <script setup lang="ts">
-import { ref } from 'vue';
 import { SaltIcon, SaltRippleEffect } from '../../packages';
 
-const props = defineProps({
+defineProps({
     enabled: {
         type: Boolean,
         required: false,
@@ -48,18 +48,7 @@ const props = defineProps({
     }
 })
 
-const enabled = ref(props.enabled)
-const iconColor = props.iconColor
-const text = props.text
-const sub = props.sub
-const subColor = props.subColor
-
 const emit = defineEmits(['click'])
-
-const onClick = () => {
-    if (!enabled.value) return
-    emit('click')
-}
 </script>
   
 <style scoped>
@@ -83,7 +72,7 @@ const onClick = () => {
     align-self: center;
 }
 
-.salt-item .spacer {
+.salt-item .spacer-width {
     flex-grow: 1;
     width: var(--salt-dimen-content-padding);
 }

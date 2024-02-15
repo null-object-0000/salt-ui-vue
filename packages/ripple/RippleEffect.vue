@@ -1,5 +1,5 @@
 <template>
-    <div class="ripple-container" :class="[`mix-blend-${mixBlendMode}-mode`]" ref="element" @click="animateRipple">
+    <div class="salt_ripple-effect" :class="[`mix-blend-${mixBlendMode}-mode`]" ref="element" @click="animateRipple">
         <slot></slot>
         <transition-group v-if="enabled">
             <template v-for="(val, i) in ripples">
@@ -37,11 +37,12 @@ interface Ripple {
     show: boolean;
 }
 
-const element = ref()
-const ripples = ref([] as Ripple[]);
+const element = ref<HTMLElement | null>(null)
+const ripples = ref<Ripple[]>([]);
 
 const animateRipple = (e: MouseEvent) => {
-    let pos = element.value.getBoundingClientRect();
+    let pos = element?.value?.getBoundingClientRect();
+    if (!pos) return;
 
     ripples.value.push({
         x: e.clientX - pos.left,
@@ -58,7 +59,7 @@ const rippleEnd = function (i: number) {
 </script>
 
 <style scoped>
-.ripple-container {
+.salt_ripple-effect {
     width: 100%;
     overflow: hidden;
     display: inline-block;
@@ -66,13 +67,11 @@ const rippleEnd = function (i: number) {
     transition: box-shadow 150ms ease-out;
 }
 
-.ripple-container.mix-blend-screen-mode {}
-
-.ripple-container.mix-blend-exclusion-mode {
+.salt_ripple-effect.mix-blend-exclusion-mode {
     z-index: 1;
 }
 
-.ripple-container .ripple {
+.salt_ripple-effect .ripple {
     background-color: var(--salt-color-text);
     width: 1rem;
     height: 1rem;
@@ -81,11 +80,11 @@ const rippleEnd = function (i: number) {
     transform: translateX(-100%) translateY(-100%);
 }
 
-.ripple-container.mix-blend-screen-mode .ripple {
+.salt_ripple-effect.mix-blend-screen-mode .ripple {
     animation: ripple 1250ms ease-out forwards, screen-fade 1500ms ease-out forwards;
 }
 
-.ripple-container.mix-blend-exclusion-mode .ripple {
+.salt_ripple-effect.mix-blend-exclusion-mode .ripple {
     animation: ripple 1250ms ease-out forwards, exclusion-fade 1500ms ease-out forwards;
 }
 

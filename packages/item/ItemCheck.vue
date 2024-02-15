@@ -1,8 +1,10 @@
 <template>
     <salt-ripple-effect :enabled="enabled" mix-blend-mode="exclusion" @click="onClick">
         <div class="salt-item-check" :class="[enabled ? 'enabled' : 'unenabled', model ? 'checked' : 'unchecked']">
-            <salt-icon class="icon" :name="model ? 'check' : 'un-check'"></salt-icon>
-            <span class="spacer"></span>
+            <div class="icon-container">
+                <salt-icon class="icon" :name="model ? 'check' : 'un-check'"></salt-icon>
+                <span class="spacer-width"></span>
+            </div>
             <span class="text">
                 <slot>{{ text }}</slot>
             </span>
@@ -29,14 +31,13 @@ const props = defineProps({
 })
 
 const enabled = ref(props.enabled)
-const text = props.text
 
 const emit = defineEmits(['change'])
 
-const onClick = () => {
+const onClick = (event: MouseEvent) => {
     if (!enabled.value) return
     model.value = !model.value
-    emit('change', model.value)
+    emit('change', model.value, event)
 }
 </script>
   
@@ -53,12 +54,20 @@ const onClick = () => {
     opacity: 0.5;
 }
 
+.salt-item-check .icon-container {
+    width: 48px;
+    display: flex;
+    align-items: center;
+}
+
 .salt-item-check .icon {
     font-size: 24px;
     color: var(--salt-color-hightlight);
+    align-self: center;
 }
 
-.salt-item-check .spacer {
+.salt-item-check .spacer-width {
+    flex-grow: 1;
     width: var(--salt-dimen-content-padding);
 }
 

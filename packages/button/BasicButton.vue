@@ -31,6 +31,19 @@ const onClick = () => {
   
 <style scoped>
 .salt-basic-button button {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    font-family: inherit;
+    font-style: inherit;
+    font-variant: inherit;
+    line-height: 1;
+    text-transform: none;
+    cursor: pointer;
+    -webkit-appearance: button;
+}
+
+.salt-basic-button button {
     width: 100%;
     border-radius: var(--salt-dimen-corner);
     background-color: var(--salt-color-hightlight);

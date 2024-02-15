@@ -9,8 +9,6 @@
       SaltUI（UI for Salt Player） 是提取自椒盐音乐的 UI 风格组件，用以快速生成椒盐音乐风格用户界面。本库将会广泛用以椒盐系列 App 开发，以达到快速开发目的
     </salt-item-outer-large-title>
 
-    <salt-ui-logo></salt-ui-logo>
-
     <salt-rounded-column>
       <salt-item-check>未选中按钮</salt-item-check>
       <salt-item-check :model-value="true">选中按钮</salt-item-check>
@@ -37,7 +35,7 @@
     </salt-rounded-column>
 
     <salt-rounded-column title="Value 组件">
-      <salt-item-value text="Value 标题" :sub="model.text || 'Value 内容'"></salt-item-value>
+      <salt-item-value text="Value 标题" sub="Value 内容"></salt-item-value>
       <salt-item-value text="Value 标题标题标题标题标题标题标题标题标题标题标题" sub="Value 内容内容内容内容"></salt-item-value>
     </salt-rounded-column>
 
@@ -64,8 +62,13 @@
       <salt-item text="InputDialog" @click="model.inputDialog.open = true"></salt-item>
     </salt-rounded-column>
 
+    <salt-rounded-column>
+      <salt-item-slider icon-painter="qr-code" text="Slider 滑块" :steps="10"></salt-item-slider>
+    </salt-rounded-column>
+
     <salt-rounded-column outer title="猜你在找">
       <salt-item-outer>你好呀</salt-item-outer>
+      <salt-item-spacer></salt-item-spacer>
     </salt-rounded-column>
   </div>
 
@@ -82,11 +85,10 @@ import { reactive } from 'vue';
 import {
   SaltTitleBar, SaltBottomBar, SaltBottomBarItem,
   SaltTextButton,
-  SaltItemTitle, SaltItem, SaltItemSwitcher, SaltItemCheck, SaltItemValue, SaltItemEdit, SaltItemEditPassword, SaltItemContainer,
+  SaltItemTitle, SaltItem, SaltItemSwitcher, SaltItemCheck, SaltItemValue, SaltItemEdit, SaltItemEditPassword, SaltItemSlider, SaltItemSpacer, SaltItemContainer,
   SaltItemOuterLargeTitle, SaltItemOuter,
   SaltRoundedColumn,
   SaltYesDialog, SaltYesNoDialog, SaltInputDialog,
-  SaltUiLogo,
 } from '../packages';
 
 const model = reactive({
@@ -96,7 +98,7 @@ const model = reactive({
   yesDialog: false,
   inputDialog: {
     open: false,
-    text: 'Hello World!',
+    text: '',
   },
 });
 
@@ -111,7 +113,7 @@ const onBack = () => {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 1001;
 
   background-color: var(--salt-color-background);
 }
@@ -119,9 +121,10 @@ const onBack = () => {
 .content {
   padding-top: 56px;
   padding-bottom: 56px;
-  overflow: auto;
 
   background-color: var(--salt-color-background);
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .footer {
@@ -129,7 +132,7 @@ const onBack = () => {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 1001;
 }
 
 .vue-superscript {
