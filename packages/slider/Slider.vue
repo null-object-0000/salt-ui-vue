@@ -9,6 +9,7 @@
 </template>
 
 <script setup lang="ts">
+// FIXME: 左上角有部分背景色没有被完成覆盖
 import { ModelRef, onMounted, ref } from 'vue';
 
 const model = defineModel() as ModelRef<number>
