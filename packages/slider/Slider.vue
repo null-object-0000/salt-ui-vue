@@ -54,8 +54,8 @@ const round = (value: number, precision = 4) => {
 
 onMounted(() => {
     position.value = percentage2Position(model.value)
-    width.value = element?.value?.offsetWidth
-    offset.value = element?.value?.getBoundingClientRect().left
+    width.value = element.value?.offsetWidth
+    offset.value = element.value?.getBoundingClientRect().left
     bindListener()
 })
 
@@ -84,6 +84,9 @@ const percentage2Position = (percentage: number) => {
 }
 
 const refreshPosition = (event: MouseEvent | TouchEvent) => {
+    width.value = element.value?.offsetWidth
+    offset.value = element.value?.getBoundingClientRect().left
+
     let pos;
     if (event instanceof TouchEvent) {
         pos = event.touches[0].clientX - offset.value;
@@ -101,13 +104,10 @@ const refreshPosition = (event: MouseEvent | TouchEvent) => {
 
     let percentage = postion2Percentage(pos)
 
-    console.log('percentage.begin', percentage)
-
     // 限制步长
     if (steps.value > 0) {
         const step = 100 / steps.value;
         percentage = Math.round(percentage / step) * step;
-        console.log('percentage.step', percentage)
     }
 
     // 限制范围 valueRange
@@ -118,7 +118,6 @@ const refreshPosition = (event: MouseEvent | TouchEvent) => {
     } else if (percentage > max) {
         percentage = max
     }
-
 
     pos = percentage2Position(percentage)
 

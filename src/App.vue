@@ -123,6 +123,8 @@ const onBack = () => {
   padding-bottom: 56px;
 
   background-color: var(--salt-color-background);
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .footer {
