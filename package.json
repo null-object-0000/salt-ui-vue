@@ -37,9 +37,8 @@
     "url": "https://github.com/null-object-0000/salt-ui-vue/issues"
   },
   "keywords": [
-    "ui",
-    "ui-components",
-    "salt-ui"
+    "salt-ui",
+    "ui-components"
   ],
   "scripts": {
     "dev": "vite --config=vite.demo.config.ts",
