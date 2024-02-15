@@ -4,10 +4,10 @@
 
         <salt-item-edit v-model="model" @change="onChange"></salt-item-edit>
 
-        <form class="action-container" method="dialog">
-            <salt-text-button class="cancel" @click="onCancel" text="Cancel"></salt-text-button>
-            <div class="spacer"></div>
-            <salt-text-button class="confirm" @click="onConfirm" text="Confirm"></salt-text-button>
+        <form class="actions" method="dialog">
+            <salt-text-button class="cancel" @click="onCancel" text="CANCEL"></salt-text-button>
+            <div class="spacer-width"></div>
+            <salt-text-button class="confirm" @click="onConfirm" text="CONFIRM"></salt-text-button>
         </form>
     </salt-basic-dialog>
 </template>
@@ -42,8 +42,8 @@ const onConfirm = () => {
 }
 </script>
   
-<style scoped>
-.salt-input-dialog .action-container {
+<style>
+.salt-input-dialog .actions {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -52,11 +52,11 @@ const onConfirm = () => {
     padding: 0 var(--salt-dimen-outer-horizontal-padding);
 }
 
-.salt-input-dialog .action-container .spacer {
+.salt-input-dialog .spacer-width {
     width: var(--salt-dimen-outer-horizontal-padding);
 }
 
-.salt-input-dialog button.salt-basic-button.salt-text-button.cancel {
+.salt-input-dialog .salt-basic-button.salt-text-button.cancel button {
     color: var(--salt-color-sub-text);
     background-color: var(--salt-color-sub-background);
 }

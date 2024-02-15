@@ -7,6 +7,7 @@ import dts from 'vite-plugin-dts'
 export default defineConfig({
   plugins: [vue(), dts()],
   build: {
+    outDir: 'dist/lib',
     lib: {
       // Could also be a dictionary or array of multiple entry points
       entry: [

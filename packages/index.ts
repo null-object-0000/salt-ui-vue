@@ -17,7 +17,8 @@ import SaltItemCheck from './item/ItemCheck.vue';
 import SaltItemValue from './item/ItemValue.vue';
 import SaltItemEdit from './item/ItemEdit.vue';
 import SaltItemEditPassword from './item/ItemEditPassword.vue';
-// import SaltItemSpacer from './item/ItemSpacer.vue';
+import SaltItemSlider from './item/ItemSlider.vue';
+import SaltItemSpacer from './item/ItemSpacer.vue';
 import SaltItemContainer from './item/ItemContainer.vue';
 import SaltItemOutSpacer from './item/ItemOutSpacer.vue';
 import SaltItemOutHalfSpacer from './item/ItemOutHalfSpacer.vue';
@@ -29,7 +30,7 @@ import SaltItemOuterTextButton from './item-outer/ItemOuterTextButton.vue';
 
 import SaltRoundedColumn from './rounded-column/RoundedColumn.vue';
 
-import SaltUiLogo from './salt-ui/SaltUILogo.vue';
+import SaltSlider from './slider/Slider.vue';
 
 // import SaltColumnBottomSheetDialog from './dialog/ColumnBottomSheetDialog.vue';
 import SaltYesDialog from './dialog/YesDialog.vue';
@@ -44,10 +45,10 @@ import SaltRippleEffect from './ripple/RippleEffect.vue';
 export {
     SaltTitleBar, SaltBottomBar, SaltBottomBarItem,
     SaltTextButton, SaltBasicButton, SaltSwitchButton,
-    SaltItemTitle, SaltItemText, SaltItem, SaltItemSwitcher, SaltItemCheck, SaltItemValue, SaltItemEdit, SaltItemEditPassword, SaltItemContainer,
+    SaltItemTitle, SaltItemText, SaltItem, SaltItemSwitcher, SaltItemCheck, SaltItemValue, SaltItemEdit, SaltItemEditPassword, SaltItemSlider, SaltItemSpacer, SaltItemContainer,
     SaltItemOuterTitle, SaltItemOuterLargeTitle, SaltItemOuter, SaltItemOuterTextButton, SaltItemOutSpacer, SaltItemOutHalfSpacer,
     SaltRoundedColumn,
-    SaltUiLogo,
+    SaltSlider,
     SaltYesDialog, SaltYesNoDialog, SaltInputDialog, SaltBasicDialog, SlatDialogTitle,
     SaltIcon, SaltRippleEffect
 };
@@ -55,10 +56,10 @@ export {
 const components = [
     SaltTitleBar, SaltBottomBar, SaltBottomBarItem,
     SaltTextButton,
-    SaltItemTitle, SaltItemText, SaltItem, SaltItemSwitcher, SaltItemCheck, SaltItemValue, SaltItemEdit, SaltItemEditPassword, SaltItemContainer,
+    SaltItemTitle, SaltItemText, SaltItem, SaltItemSwitcher, SaltItemCheck, SaltItemValue, SaltItemEdit, SaltItemEditPassword, SaltItemSlider, SaltItemSpacer, SaltItemContainer,
     SaltItemOuterTitle, SaltItemOuterLargeTitle, SaltItemOuter, SaltItemOuterTextButton, SaltItemOutSpacer, SaltItemOutHalfSpacer,
     SaltRoundedColumn,
-    SaltUiLogo,
+    SaltSlider,
     SaltYesDialog, SaltYesNoDialog, SaltInputDialog, SaltBasicDialog, SlatDialogTitle,
     SaltIcon, SaltRippleEffect
 ];

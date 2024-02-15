@@ -4,10 +4,10 @@
 
         <slot><salt-item-text :text="content"></salt-item-text></slot>
 
-        <form class="action-container" method="dialog">
-            <salt-text-button class="cancel" @click="onCancel" :text="cancelText"></salt-text-button>
-            <div class="spacer"></div>
-            <salt-text-button class="confirm" @click="onConfirm" :text="confirmText"></salt-text-button>
+        <form class="actions" method="dialog">
+            <salt-text-button class="cancel" @click="onCancel" :text="cancelText.toUpperCase()"></salt-text-button>
+            <div class="spacer-width"></div>
+            <salt-text-button class="confirm" @click="onConfirm" :text="confirmText.toUpperCase()"></salt-text-button>
         </form>
     </salt-basic-dialog>
 </template>
@@ -51,8 +51,8 @@ const onConfirm = () => {
 }
 </script>
   
-<style scoped>
-.salt-yes-no-dialog .action-container {
+<style>
+.salt-yes-no-dialog .actions {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -61,11 +61,11 @@ const onConfirm = () => {
     padding: 0 var(--salt-dimen-outer-horizontal-padding);
 }
 
-.salt-yes-no-dialog .action-container .spacer {
+.salt-yes-no-dialog .spacer-width {
     width: var(--salt-dimen-outer-horizontal-padding);
 }
 
-.salt-yes-no-dialog button.salt-basic-button.salt-text-button.cancel {
+.salt-yes-no-dialog .salt-basic-button.salt-text-button.cancel button {
     color: var(--salt-color-sub-text);
     background-color: var(--salt-color-sub-background);
 }

@@ -2,10 +2,11 @@
   "name": "@snewbie/salt-ui-vue",
   "private": false,
   "version": "0.0.1",
+  "implemented-version": "0.1.0-dev51",
   "description": "A Vue 3 UI library based on SaltUI.",
-  "main": "dist/salt-ui.umd.cjs",
-  "module": "dist/salt-ui.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/lib/salt-ui.umd.cjs",
+  "module": "dist/lib/salt-ui.js",
+  "types": "dist/lib/index.d.ts",
   "type": "module",
   "author": "null_object_0000",
   "license": "MIT",
@@ -13,20 +14,20 @@
     "package.json",
     "README.md",
     "LICENSE",
-    "dist"
+    "dist/lib"
   ],
   "exports": {
     ".": {
-      "import": "./dist/salt-ui.js",
-      "require": "./dist/salt-ui.umd.cjs"
+      "import": "./dist/lib/salt-ui.js",
+      "require": "./dist/lib/salt-ui.umd.cjs"
     },
     "./style.css": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
+      "import": "./dist/lib/style.css",
+      "require": "./dist/lib/style.css"
     },
     "./theme/variables.css": {
-      "import": "./dist/theme/variables.css",
-      "require": "./dist/theme/variables.css"
+      "import": "./dist/lib/theme/variables.css",
+      "require": "./dist/lib/theme/variables.css"
     }
   },
   "repository": {
@@ -42,7 +43,7 @@
   ],
   "scripts": {
     "dev": "vite --config=vite.demo.config.ts",
-    "build": "npm run build:demo",
+    "build": "npm run build:lib & npm run build:demo",
     "build:lib": "vue-tsc && vite build --config=vite.lib.config.ts",
     "build:demo": "vue-tsc && vite build --config=vite.demo.config.ts",
     "preview": "vite preview --config=vite.demo.config.ts"
@@ -57,6 +58,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
+    "@vitejs/plugin-legacy": "^5.3.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "cz-git": "^1.8.0",
     "typescript": "^5.2.2",

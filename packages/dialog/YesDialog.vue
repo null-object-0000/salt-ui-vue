@@ -4,8 +4,8 @@
 
         <slot><salt-item-text :text="content"></salt-item-text></slot>
 
-        <form class="action-container" method="dialog">
-            <salt-text-button class="confirm" @click="onConfirm" :text="text"></salt-text-button>
+        <form class="actions" method="dialog">
+            <salt-text-button class="confirm" @click="onConfirm" :text="text.toUpperCase()"></salt-text-button>
         </form>
     </salt-basic-dialog>
 </template>
@@ -40,7 +40,7 @@ const onConfirm = () => {
 </script>
   
 <style scoped>
-.salt-yes-dialog .action-container {
+.salt-yes-dialog .actions {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
