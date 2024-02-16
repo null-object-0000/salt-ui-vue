@@ -4,6 +4,8 @@
 
 一个 [Salt UI](https://github.com/Moriafly/SaltUI) 风格的移动端 Vue 3 组件库。
 
+<img src="./mobile.jpg" width="220" >
+
 # 安装
 
 在现有项目中使用 Salt UI 时，可以通过 npm 进行安装：

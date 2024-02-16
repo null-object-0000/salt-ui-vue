@@ -9,6 +9,7 @@
 </template>
 
 <script setup lang="ts">
+// FIXME: 左上角有部分背景色没有被完成覆盖
 import { ModelRef, onMounted, ref } from 'vue';
 
 const model = defineModel() as ModelRef<number>
@@ -80,7 +81,35 @@ const postion2Percentage = (position: number) => {
 }
 
 const percentage2Position = (percentage: number) => {
-    return (width.value - 24) * percentage / 100
+    const width = element.value?.offsetWidth || 0
+    return (width - 24) * percentage / 100
+}
+
+const limit = (percentage: number) => {
+    // 限制步长
+    if (steps.value > 0) {
+        percentage = Math.round(percentage / steps.value) * steps.value;
+    }
+
+    // 限制范围 valueRange
+    if (valueRange.value.length === 2) {
+        const min = valueRange.value[0]
+        const max = valueRange.value[1]
+        if (percentage < min) {
+            percentage = min
+        } else if (percentage > max) {
+            percentage = max
+        }
+    }
+
+    // 默认范围 0 - 100
+    if (percentage < 0) {
+        percentage = 0
+    } else if (percentage > 100) {
+        percentage = 100
+    }
+
+    return percentage
 }
 
 const refreshPosition = (event: MouseEvent | TouchEvent) => {
@@ -103,25 +132,9 @@ const refreshPosition = (event: MouseEvent | TouchEvent) => {
     pos = Math.max(pos - 24, 0)
 
     let percentage = postion2Percentage(pos)
+    percentage = limit(percentage)
 
-    // 限制步长
-    if (steps.value > 0) {
-        const step = 100 / steps.value;
-        percentage = Math.round(percentage / step) * step;
-    }
-
-    // 限制范围 valueRange
-    const min = valueRange.value[0]
-    const max = valueRange.value[1]
-    if (percentage < min) {
-        percentage = min
-    } else if (percentage > max) {
-        percentage = max
-    }
-
-    pos = percentage2Position(percentage)
-
-    position.value = pos
+    position.value = percentage2Position(percentage)
     model.value = percentage
     emit('change', model.value, event)
 }
@@ -172,7 +185,7 @@ const dragEnd = () => {
 }
 
 .salt-slider .track {
-    background-color: var(--salt-color-hightlight);
+    background-color: var(--salt-color-highlight);
     width: 0px;
     height: var(--salt-slider-track-height);
     padding-right: var(--salt-slider-track-height);

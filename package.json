@@ -1,9 +1,9 @@
 {
   "name": "@snewbie/salt-ui-vue",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "implemented-version": "0.1.0-dev51",
-  "description": "A Vue 3 UI library based on SaltUI.",
+  "description": "一个 Salt UI 风格的移动端 Vue 3 组件库。",
   "main": "dist/lib/salt-ui.umd.cjs",
   "module": "dist/lib/salt-ui.js",
   "types": "dist/lib/index.d.ts",
@@ -14,7 +14,7 @@
     "package.json",
     "README.md",
     "LICENSE",
-    "dist/lib"
+    "dist"
   ],
   "exports": {
     ".": {

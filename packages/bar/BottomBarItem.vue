@@ -52,7 +52,7 @@ const onClick = () => {
 }
 
 .salt-bottom-bar-item.checked {
-    color: var(--salt-color-hightlight);
+    color: var(--salt-color-highlight);
 }
 
 @media (prefers-color-scheme: dark) {

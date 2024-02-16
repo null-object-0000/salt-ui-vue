@@ -1,5 +1,6 @@
 <template>
-    <salt-basic-dialog :open="open" class="salt-yes-dialog">
+    <salt-basic-dialog v-model:open="open" class-name="salt-yes-dialog" :close-on-outside-click="closeOnOutsideClick"
+        :teleport="teleport">
         <slat-dialog-title :text="title"></slat-dialog-title>
 
         <slot><salt-item-text :text="content"></salt-item-text></slot>
@@ -30,6 +31,21 @@ defineProps({
         required: false,
         default: 'Confirm'
     },
+    /**
+     * 是否点击 dialog 以外的区域关闭 dialog
+     */
+    closeOnOutsideClick: {
+        type: Boolean,
+        required: false,
+        default: true
+    },
+    /**
+     * 指定挂载的节点，等同于 Teleport 组件的 to 属性
+     */
+    teleport: {
+        type: String,
+        required: false
+    }
 })
 
 const emit = defineEmits(['dismissRequest'])
@@ -39,7 +55,7 @@ const onConfirm = () => {
 }
 </script>
   
-<style scoped>
+<style>
 .salt-yes-dialog .actions {
     display: flex;
     flex-direction: row;

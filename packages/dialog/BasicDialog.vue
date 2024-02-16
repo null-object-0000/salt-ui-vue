@@ -1,22 +1,55 @@
 <template>
-    <div class="salt-basic-dialog" :class="[open ? 'open' : null]">
-        <transition>
-            <dialog v-if="open" :open="true">
-                <slot></slot>
-            </dialog>
-        </transition>
-    </div>
+    <teleport :to="teleport" :disabled="!teleport">
+        <div class="salt-basic-dialog" :class="[className, open ? 'open' : null]" @click="closeDialog">
+            <transition>
+                <dialog v-if="open" :open="true" ref="dialog">
+                    <slot></slot>
+                </dialog>
+            </transition>
+        </div>
+    </teleport>
 </template>
   
 <script setup lang="ts">
-import { ModelRef } from 'vue';
+import { ModelRef, ref } from 'vue';
 
 const open = defineModel('open') as ModelRef<Boolean>;
+
+const props = defineProps({
+    className: {
+        type: String,
+        required: false
+    },
+    /**
+     * 是否点击 dialog 以外的区域关闭 dialog
+     */
+    closeOnOutsideClick: {
+        type: Boolean,
+        required: false,
+        default: true
+    },
+    /**
+     * 指定挂载的节点，等同于 Teleport 组件的 to 属性
+     */
+    teleport: {
+        type: String,
+        required: false
+    }
+})
+
+const closeOnOutsideClick = props.closeOnOutsideClick
+
+const dialog = ref<HTMLElement | null>(null);
+// 点击 dialog 以外的区域关闭 dialog
+const closeDialog = (event: MouseEvent) => {
+    if (!closeOnOutsideClick) return;
+    if (dialog.value && !dialog.value.contains(event.target as Node)) {
+        open.value = false;
+    }
+}
 </script>
   
-<style scoped>
-.salt-basic-dialog {}
-
+<style>
 .salt-basic-dialog.open {
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;

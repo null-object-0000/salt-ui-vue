@@ -1,5 +1,6 @@
 <template>
-    <salt-basic-dialog :open="open" class="salt-input-dialog">
+    <salt-basic-dialog v-model:open="open" class-name="salt-input-dialog" :close-on-outside-click="closeOnOutsideClick"
+        :teleport="teleport">
         <slat-dialog-title :text="title"></slat-dialog-title>
 
         <salt-item-edit v-model="model" @change="onChange"></salt-item-edit>
@@ -24,6 +25,21 @@ defineProps({
         type: String,
         required: false
     },
+    /**
+     * 是否点击 dialog 以外的区域关闭 dialog
+     */
+    closeOnOutsideClick: {
+        type: Boolean,
+        required: false,
+        default: true
+    },
+    /**
+     * 指定挂载的节点，等同于 Teleport 组件的 to 属性
+     */
+    teleport: {
+        type: String,
+        required: false
+    }
 })
 
 const emit = defineEmits(['change', 'confirm', 'cancel', 'dismissRequest'])

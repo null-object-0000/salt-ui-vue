@@ -62,7 +62,7 @@ const onClick = (event: MouseEvent) => {
 
 .salt-item-check .icon {
     font-size: 24px;
-    color: var(--salt-color-hightlight);
+    color: var(--salt-color-highlight);
     align-self: center;
 }
 
