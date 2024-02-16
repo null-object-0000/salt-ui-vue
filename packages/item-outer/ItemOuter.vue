@@ -24,7 +24,7 @@ const onClick = () => { emit('click') }
 .salt-item-outer {
     width: 100%;
     padding: var(--salt-dimen-outer-vertical-padding) var(--salt-dimen-outer-horizontal-padding);
-    color: var(--salt-color-hightlight);
+    color: var(--salt-color-highlight);
     font-weight: bold;
     font-size: var(--salt-text-style-main-font-size);
     line-height: var(--salt-text-style-main-line-height);

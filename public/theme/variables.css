@@ -5,7 +5,7 @@ svg {
 /** Salt CSS Variables **/
 :root {
   /** salt-colors **/
-  --salt-color-hightlight: #0470E6;
+  --salt-color-highlight: #0470E6;
   --salt-color-text: #1E1715;
   --salt-color-sub-text: #8C8C8C;
   --salt-color-background: #f7f9fa;
@@ -37,7 +37,7 @@ svg {
 
   body {
     /** salt-colors **/
-    --salt-color-hightlight: #1478C8;
+    --salt-color-highlight: #1478C8;
     --salt-color-text: #EBEEF1;
     --salt-color-sub-text: #E1E6EB;
     --salt-color-background: #0C0C0C;

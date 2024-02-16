@@ -20,7 +20,7 @@ defineProps({
 
     width: 100%;
     padding: var(--salt-dimen-inner-vertical-padding) var(--salt-dimen-inner-horizontal-padding);
-    color: var(--salt-color-hightlight);
+    color: var(--salt-color-highlight);
     font-weight: bold;
 }
 </style>

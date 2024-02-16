@@ -46,7 +46,7 @@ const onClick = () => {
 .salt-basic-button button {
     width: 100%;
     border-radius: var(--salt-dimen-corner);
-    background-color: var(--salt-color-hightlight);
+    background-color: var(--salt-color-highlight);
     padding: var(--salt-dimen-content-padding);
 }
 </style>

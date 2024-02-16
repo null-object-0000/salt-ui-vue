@@ -92,6 +92,7 @@ const restoreInputPosition = () => {
     width: 100%;
     border-radius: var(--salt-dimen-corner);
     background-color: transparent;
+    caret-color: var(--salt-color-highlight);
 
     border: none;
     height: 46px;

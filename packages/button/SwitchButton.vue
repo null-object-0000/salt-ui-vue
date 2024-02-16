@@ -38,7 +38,7 @@ const onClick = () => {
 }
 
 .salt-switch-button.checked {
-    background-color: var(--salt-color-hightlight);
+    background-color: var(--salt-color-highlight);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -47,7 +47,7 @@ const onClick = () => {
     }
 
     .salt-switch-button.checked {
-        background-color: var(--salt-color-hightlight);
+        background-color: var(--salt-color-highlight);
     }
 }
 

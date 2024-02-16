@@ -185,7 +185,7 @@ const dragEnd = () => {
 }
 
 .salt-slider .track {
-    background-color: var(--salt-color-hightlight);
+    background-color: var(--salt-color-highlight);
     width: 0px;
     height: var(--salt-slider-track-height);
     padding-right: var(--salt-slider-track-height);
