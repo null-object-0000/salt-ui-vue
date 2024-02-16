@@ -2,8 +2,10 @@
     <salt-ripple-effect :enabled="enabled" mix-blend-mode="exclusion"
         @click="(event: MouseEvent) => { if (enabled) emit('click', event) }">
         <div class="salt-item" :class="[enabled ? 'enabled' : 'unenabled']">
-            <div v-if="iconPainter" class="icon-container">
-                <salt-icon class="icon" :name="iconPainter" :style="{ color: iconColor }"></salt-icon>
+            <div v-if="iconPainter || $slots.icon" class="icon-container">
+                <slot name="icon">
+                    <salt-icon class="icon" :name="iconPainter" :style="{ color: iconColor }"></salt-icon>
+                </slot>
                 <span class="spacer-width"></span>
             </div>
             <div class="row">

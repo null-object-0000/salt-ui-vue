@@ -1,9 +1,11 @@
 <template>
     <salt-ripple-effect :enabled="enabled" mix-blend-mode="exclusion" @click="onClick">
         <div class="salt-item-switcher" :class="[enabled ? 'enabled' : 'unenabled', model ? 'checked' : 'unchecked']">
-            <div v-if="iconPainter" class="icon-container">
-                <salt-icon class="icon" :name="iconPainter" :style="{ color: iconColor }"></salt-icon>
-                <span class="spacer"></span>
+            <div v-if="iconPainter || $slots.icon" class="icon-container">
+                <slot name="icon">
+                    <salt-icon class="icon" :name="iconPainter" :style="{ color: iconColor }"></salt-icon>
+                </slot>
+                <span class="spacer-width"></span>
             </div>
             <div class="row">
                 <span class="text">{{ text }} </span>

@@ -1,8 +1,10 @@
 <template>
     <div class="salt-item-slider" :class="[enabled ? 'enabled' : 'unenabled']">
         <div class="row">
-            <div v-if="iconPainter" class="icon-container">
-                <salt-icon class="icon" :name="iconPainter" :style="{ color: iconColor }"></salt-icon>
+            <div v-if="iconPainter || $slots.icon" class="icon-container">
+                <slot name="icon">
+                    <salt-icon class="icon" :name="iconPainter" :style="{ color: iconColor }"></salt-icon>
+                </slot>
                 <span class="spacer-width"></span>
             </div>
             <span class="text">{{ text }} </span>

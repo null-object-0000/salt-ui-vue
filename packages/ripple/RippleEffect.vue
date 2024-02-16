@@ -13,6 +13,7 @@
 
 <script setup lang="ts">
 // FIXME: 当外层有圆角时，效果会超出圆角范围，需要修复
+// FIXME: 当页面跳转后并返回时，效果会继续播放，需要修复
 import { ref } from 'vue';
 import type * as CSS from 'csstype';
 
