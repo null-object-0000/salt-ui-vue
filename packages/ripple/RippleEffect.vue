@@ -49,8 +49,6 @@ const animateRipple = (e: MouseEvent) => {
         y: e.clientY - pos.top,
         show: true
     });
-
-    console.log('animateRipple', JSON.stringify(ripples.value));
 }
 
 const rippleEnd = function (i: number) {

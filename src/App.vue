@@ -63,7 +63,7 @@
     </salt-rounded-column>
 
     <salt-rounded-column>
-      <salt-item-slider icon-painter="qr-code" text="Slider 滑块" :steps="10"></salt-item-slider>
+      <salt-item-slider v-model="model.slider" icon-painter="qr-code" text="Slider 滑块" :steps="2"></salt-item-slider>
     </salt-rounded-column>
 
     <salt-rounded-column outer title="猜你在找">
@@ -100,6 +100,7 @@ const model = reactive({
     open: false,
     text: '',
   },
+  slider: 0,
 });
 
 const onBack = () => {
