@@ -2,7 +2,7 @@
     <!-- TODO: 暂时没有支持多行文本 -->
     <div class="salt-item-edit" :class="[$slots.default ? 'has-slot' : null]">
         <div class="text">
-            <input :type="type" ref="inputRef" v-model="model" :readonly="readOnly" :placeholder="hint"
+            <input :type="type" ref="input" v-model="model" :readonly="readOnly" :placeholder="hint"
                 @focus="fixInputPosition" @blur="restoreInputPosition" @change="(event: Event) => emit('change', event)" />
         </div>
         <div class="action">
@@ -16,7 +16,7 @@ import { ModelRef, ref } from 'vue';
 
 const model = defineModel() as ModelRef<string>
 
-defineProps({
+const props = defineProps({
     backgroundColor: {
         type: String,
         required: false
@@ -34,22 +34,32 @@ defineProps({
         required: false,
         default: false
     },
-
     type: {
         type: String,
         required: false,
         default: 'text'
+    },
+    /**
+     * 修正输入框的位置
+     */
+    enabledFixInputPosition: {
+        type: Boolean,
+        required: false,
+        default: true
     }
 })
 
+const enabledFixInputPosition = props.enabledFixInputPosition
+
 const emit = defineEmits(['change'])
 
-const inputRef = ref<HTMLInputElement | null>(null)
+const input = ref<HTMLInputElement | null>(null)
 const lastTime = ref<number>(0)
 const interval = ref<NodeJS.Timeout | null>(null)
 
 const fixInputPosition = () => {
-    if (!inputRef.value) return
+    if (!enabledFixInputPosition) return
+    if (!input.value) return
 
     lastTime.value = Date.now()
     interval.value = setInterval(() => {
@@ -58,9 +68,9 @@ const fixInputPosition = () => {
             restoreInputPosition()
         }
 
-        const top = inputRef.value?.getBoundingClientRect()?.top
+        const top = input.value?.getBoundingClientRect()?.top
         if (top && top < 0) {
-            inputRef.value?.scrollIntoView(true)
+            input.value?.scrollIntoView(true)
         }
     }, 5)
 }
