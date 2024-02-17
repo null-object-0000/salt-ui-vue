@@ -1,7 +1,7 @@
 {
   "name": "@snewbie/salt-ui-vue",
   "private": false,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "implemented-version": "0.1.0-dev51",
   "description": "一个 Salt UI 风格的移动端 Vue 3 组件库。",
   "main": "dist/lib/salt-ui.umd.cjs",
