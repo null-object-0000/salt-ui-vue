@@ -3,8 +3,9 @@
         <slot></slot>
         <transition-group v-if="enabled">
             <template v-for="(val, i) in ripples">
-                <span class="ripple" v-bind:ref="'ripple-' + i" :key="'ripple' + i" v-if="val.show === true"
-                    :style="{ top: val.y + 'px', left: val.x + 'px', mixBlendMode }" v-on:animationend="rippleEnd(i)">
+                <span class="salt_ripple-effect__ripple_item" v-bind:ref="'ripple-' + i" :key="'ripple' + i"
+                    v-if="val.show === true" :style="{ top: val.y + 'px', left: val.x + 'px', mixBlendMode }"
+                    v-on:animationend="rippleEnd(i)">
                 </span>
             </template>
         </transition-group>
@@ -13,9 +14,27 @@
 
 <script setup lang="ts">
 // FIXME: 当外层有圆角时，效果会超出圆角范围，需要修复
-// FIXME: 当页面跳转后并返回时，效果会继续播放，需要修复
 import { ref } from 'vue';
 import type * as CSS from 'csstype';
+
+declare global {
+    interface Window {
+        SaltUI: {
+            clearAllRippleAnimate: () => void;
+        }
+    }
+}
+
+window.SaltUI = window.SaltUI || {
+    clearAllRippleAnimate: () => {
+        ripples.value = [];
+
+        const elements = document.getElementsByClassName('salt_ripple-effect__ripple_item')
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].remove()
+        }
+    }
+};
 
 defineProps({
     enabled: {
@@ -70,7 +89,7 @@ const rippleEnd = function (i: number) {
     z-index: 1;
 }
 
-.salt_ripple-effect .ripple {
+.salt_ripple-effect .salt_ripple-effect__ripple_item {
     background-color: var(--salt-color-text);
     width: 1rem;
     height: 1rem;
@@ -79,11 +98,11 @@ const rippleEnd = function (i: number) {
     transform: translateX(-100%) translateY(-100%);
 }
 
-.salt_ripple-effect.mix-blend-screen-mode .ripple {
+.salt_ripple-effect.mix-blend-screen-mode .salt_ripple-effect__ripple_item {
     animation: ripple 1250ms ease-out forwards, screen-fade 1500ms ease-out forwards;
 }
 
-.salt_ripple-effect.mix-blend-exclusion-mode .ripple {
+.salt_ripple-effect.mix-blend-exclusion-mode .salt_ripple-effect__ripple_item {
     animation: ripple 1250ms ease-out forwards, exclusion-fade 1500ms ease-out forwards;
 }
 

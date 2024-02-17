@@ -1,24 +1,24 @@
 <template>
-    <teleport :to="teleport" :disabled="!teleport">
-        <div class="salt-basic-dialog" :class="[className, open ? 'open' : null]" @click="closeDialog">
-            <transition>
-                <dialog v-if="open" :open="true" ref="dialog">
-                    <slot></slot>
-                </dialog>
-            </transition>
+    <dialog class="salt-basic-dialog" ref="dialog" @close="open = false; emit('close')" @click="onOutsideClick">
+        <div class="content" ref="content">
+            <slot></slot>
         </div>
-    </teleport>
+    </dialog>
 </template>
   
 <script setup lang="ts">
-import { ModelRef, ref } from 'vue';
+import { ModelRef, ref, watch, onMounted } from 'vue';
 
-const open = defineModel('open') as ModelRef<Boolean>;
+const open = defineModel('open') as ModelRef<boolean>;
 
 const props = defineProps({
-    className: {
-        type: String,
-        required: false
+    /**
+     * 是否展示遮罩层
+     */
+    overlay: {
+        type: Boolean,
+        required: false,
+        default: true
     },
     /**
      * 是否点击 dialog 以外的区域关闭 dialog
@@ -28,57 +28,80 @@ const props = defineProps({
         required: false,
         default: true
     },
-    /**
-     * 指定挂载的节点，等同于 Teleport 组件的 to 属性
-     */
-    teleport: {
-        type: String,
-        required: false
+})
+
+const overlay = props.overlay
+const closeOnOutsideClick = props.closeOnOutsideClick
+
+const dialog = ref<HTMLDialogElement | null>(null);
+const content = ref<HTMLDivElement | null>(null);
+
+const emit = defineEmits(['open', 'close', 'dismissRequest'])
+
+// 点击 dialog 以外的区域关闭 dialog
+const onOutsideClick = (event: MouseEvent) => {
+    if (!closeOnOutsideClick) return;
+
+    if (content.value && !content.value.contains(event.target as Node)) {
+        open.value = false
+    }
+}
+
+const show = () => {
+    overlay ? dialog.value?.showModal() : dialog.value?.show()
+    emit('open')
+}
+
+const close = () => {
+    dialog.value?.close()
+}
+
+onMounted(() => {
+    if (open.value) {
+        show()
     }
 })
 
-const closeOnOutsideClick = props.closeOnOutsideClick
-
-const dialog = ref<HTMLElement | null>(null);
-// 点击 dialog 以外的区域关闭 dialog
-const closeDialog = (event: MouseEvent) => {
-    if (!closeOnOutsideClick) return;
-    if (dialog.value && !dialog.value.contains(event.target as Node)) {
-        open.value = false;
-    }
-}
+watch(open, value => value ? show() : close())
 </script>
   
-<style>
-.salt-basic-dialog.open {
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+<style scoped>
+.salt-basic-dialog {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+    background-color: transparent;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
-    z-index: 2001;
+    transition: transform 0.3s ease;
 }
 
-.salt-basic-dialog dialog {
-    border: 0;
+.salt-basic-dialog[open] {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
 
+    transform: translateY(-10%);
+}
+
+.salt-basic-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.salt-basic-dialog .content {
+    display: none;
+}
+
+.salt-basic-dialog[open] .content {
+    display: block;
     width: 80%;
     border-radius: var(--salt-dimen-dialog-corner);
     background: var(--salt-color-background);
-}
-
-.v-enter-active,
-.v-leave-active {
-    transition: transform 0.3s ease
-}
-
-.v-enter-from,
-.v-leave-to {
-    transform: translateY(10%);
 }
 </style>
