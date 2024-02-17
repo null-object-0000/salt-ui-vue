@@ -37,8 +37,10 @@ const onClick = () => {
 }
 
 .salt-basic-button.salt-text-button button {
+    color: var(--salt-text-style-main-color);
     font-size: var(--salt-text-style-main-font-size);
     line-height: var(--salt-text-style-main-line-height);
+
     color: #ffffff;
     text-align: center;
     text-overflow: ellipsis;

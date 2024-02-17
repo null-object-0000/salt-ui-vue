@@ -92,14 +92,18 @@ const emit = defineEmits(['change'])
 }
 
 .salt-item-slider .text {
+    color: var(--salt-text-style-main-color);
     font-size: var(--salt-text-style-main-font-size);
     line-height: var(--salt-text-style-main-line-height);
+
     color: var(--salt-color-text);
 }
 
 .salt-item-slider .sub {
+    color: var(--salt-text-style-main-color);
     font-size: var(--salt-text-style-main-font-size);
     line-height: var(--salt-text-style-main-line-height);
+
     color: var(--salt-color-main-text);
 }
 

@@ -47,8 +47,10 @@ const onBack = () => {
 }
 
 .salt-title-bar .text {
+    color: var(--salt-text-style-main-color);
     font-size: var(--salt-text-style-main-font-size);
     line-height: var(--salt-text-style-main-line-height);
+
     margin: 0 auto;
     padding: 16px 56px;
     font-weight: 600;

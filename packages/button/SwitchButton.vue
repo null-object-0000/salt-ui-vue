@@ -32,23 +32,13 @@ const onClick = () => {
     border-radius: var(--salt-dimen-corner);
     padding: 5px;
     position: relative;
-    background-color: rgba(140, 140, 140, 0.1);
+    background-color: rgba(var(--salt-color-sub-text-rgb), 0.1);
 
     transition: background-color 0.3s ease;
 }
 
 .salt-switch-button.checked {
     background-color: var(--salt-color-highlight);
-}
-
-@media (prefers-color-scheme: dark) {
-    .salt-switch-button {
-        background-color: rgba(225, 230, 235, 0.1)
-    }
-
-    .salt-switch-button.checked {
-        background-color: var(--salt-color-highlight);
-    }
 }
 
 .salt-switch-button .handle {

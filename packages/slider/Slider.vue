@@ -171,7 +171,7 @@ const dragEnd = () => {
     position: relative;
     display: block;
     border-radius: var(--salt-slider-track-height);
-    background-color: rgba(140, 140, 140, 0.25);
+    background-color: rgba(var(--salt-color-sub-text-rgb), 0.25);
 }
 
 .salt-slider .thumb {
@@ -180,7 +180,7 @@ const dragEnd = () => {
     position: absolute;
     border-radius: 50%;
     background-color: #ffffff;
-    border: 1px solid rgba(140, 140, 140, 0.25);
+    border: 1px solid rgba(var(--salt-color-sub-text-rgb), 0.25);
 
     top: -1px;
 }

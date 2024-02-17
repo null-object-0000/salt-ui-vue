@@ -85,9 +85,11 @@ const restoreInputPosition = () => {
   
 <style scoped>
 .salt-item-edit {
-    padding: var(--salt-dimen-inner-vertical-padding) var(--salt-dimen-inner-horizontal-padding);
+    color: var(--salt-text-style-main-color);
     font-size: var(--salt-text-style-main-font-size);
     line-height: var(--salt-text-style-main-line-height);
+
+    padding: var(--salt-dimen-inner-vertical-padding) var(--salt-dimen-inner-horizontal-padding);
 
     position: relative;
 }
@@ -95,7 +97,7 @@ const restoreInputPosition = () => {
 .salt-item-edit .text {
     width: 100%;
     border-radius: var(--salt-dimen-corner);
-    background-color: rgba(140, 140, 140, 0.1);
+    background-color: rgba(var(--salt-color-sub-text-rgb), 0.1);
 }
 
 .salt-item-edit .text input {
@@ -121,11 +123,5 @@ const restoreInputPosition = () => {
     position: absolute;
     top: calc(var(--salt-dimen-inner-vertical-padding) * 2);
     right: calc(var(--salt-dimen-inner-horizontal-padding) + var(--salt-dimen-content-padding));
-}
-
-@media (prefers-color-scheme: dark) {
-    .salt-item-edit .text {
-        background-color: rgba(225, 230, 235, 0.1)
-    }
 }
 </style>

@@ -91,14 +91,18 @@ const onClick = () => {
 }
 
 .salt-item-switcher .text {
+    color: var(--salt-text-style-main-color);
     font-size: var(--salt-text-style-main-font-size);
     line-height: var(--salt-text-style-main-line-height);
+
     color: var(--salt-color-text);
 }
 
 .salt-item-switcher .sub {
+    color: var(--salt-text-style-sub-color);
     font-size: var(--salt-text-style-sub-font-size);
     line-height: var(--salt-text-style-sub-line-height);
+
     color: var(--salt-color-sub-text);
 }
 
