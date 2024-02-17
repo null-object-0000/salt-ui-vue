@@ -137,6 +137,7 @@ const onBack = () => {
 }
 
 .vue-superscript {
+  color: var(--salt-text-style-sub-color);
   font-size: var(--salt-text-style-sub-font-size);
   line-height: var(--salt-text-style-sub-line-height);
 

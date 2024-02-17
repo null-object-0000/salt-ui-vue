@@ -33,8 +33,10 @@ defineProps({
 }
 
 .salt-item-outer-large-title .text {
+  color: var(--salt-text-style-main-color);
   font-size: var(--salt-text-style-main-font-size);
   line-height: var(--salt-text-style-main-line-height);
+
   font-size: 24px;
   font-weight: bold;
   text-align: center;
@@ -45,8 +47,10 @@ defineProps({
 }
 
 .salt-item-outer-large-title .sub {
+  color: var(--salt-text-style-paragraph-color);
   font-size: var(--salt-text-style-paragraph-font-size);
   line-height: var(--salt-text-style-paragraph-line-height);
+
   text-align: center;
 }
 </style>

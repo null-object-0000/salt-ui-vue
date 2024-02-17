@@ -38,7 +38,7 @@ const onClick = () => {
     flex-direction: column;
     align-items: center;
 
-    color: rgba(140, 140, 140, 0.5);
+    color: rgba(var(--salt-color-sub-text-rgb), 0.5);
 }
 
 .salt-bottom-bar-item .icon {
@@ -46,18 +46,14 @@ const onClick = () => {
 }
 
 .salt-bottom-bar-item .text {
+    color: var(--salt-text-style-sub-color);
     font-size: var(--salt-text-style-sub-font-size);
     line-height: var(--salt-text-style-sub-line-height);
+
     font-size: 10px;
 }
 
 .salt-bottom-bar-item.checked {
     color: var(--salt-color-highlight);
-}
-
-@media (prefers-color-scheme: dark) {
-    .salt-bottom-bar-item {
-        color: rgba(225, 230, 235, 0.5)
-    }
 }
 </style>

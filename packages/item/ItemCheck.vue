@@ -72,8 +72,10 @@ const onClick = (event: MouseEvent) => {
 }
 
 .salt-item-check .text {
+    color: var(--salt-text-style-main-color);
     font-size: var(--salt-text-style-main-font-size);
     line-height: var(--salt-text-style-main-line-height);
+
     color: var(--salt-color-text);
 }
 

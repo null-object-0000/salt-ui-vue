@@ -5,19 +5,28 @@ svg {
 /** Salt CSS Variables **/
 :root {
   /** salt-colors **/
-  --salt-color-highlight: #0470E6;
-  --salt-color-text: #1E1715;
-  --salt-color-sub-text: #8C8C8C;
-  --salt-color-background: #f7f9fa;
-  --salt-color-sub-background: #FFFFFF;
+  --salt-color-highlight-rgb: 4, 112, 230;
+  --salt-color-text-rgb: 30, 23, 21;
+  --salt-color-sub-text-rgb: 140, 140, 140;
+  --salt-color-background-rgb: 247, 249, 250;
+  --salt-color-sub-background-rgb: 255, 255, 255;
+
+  --salt-color-highlight: rgb(var(--salt-color-highlight-rgb));
+  --salt-color-text: rgb(var(--salt-color-text-rgb));
+  --salt-color-sub-text: rgb(var(--salt-color-sub-text-rgb));
+  --salt-color-background: rgb(var(--salt-color-background-rgb));
+  --salt-color-sub-background: rgb(var(--salt-color-sub-background-rgb));
 
   /* salt-text-styles */
   --salt-text-style-main-font-size: 16px;
   --salt-text-style-main-line-height: normal;
+  --salt-text-style-main-color: var(--salt-color-text);
   --salt-text-style-sub-font-size: 12px;
   --salt-text-style-sub-line-height: normal;
+  --salt-text-style-sub-color: var(--salt-color-sub-text);
   --salt-text-style-paragraph-font-size: 16px;
   --salt-text-style-paragraph-line-height: 1.5em;
+  --salt-text-style-paragraph-color: rgba(var(--salt-color-text-rgb), 0.85);
 
   /* salt-dimens */
   --salt-dimen-corner: 12px;
@@ -37,10 +46,10 @@ svg {
 
   body {
     /** salt-colors **/
-    --salt-color-highlight: #1478C8;
-    --salt-color-text: #EBEEF1;
-    --salt-color-sub-text: #E1E6EB;
-    --salt-color-background: #0C0C0C;
-    --salt-color-sub-background: #191919;
+    --salt-color-highlight-rgb: 20, 120, 200;
+    --salt-color-text-rgb: 235, 238, 241;
+    --salt-color-sub-text-rgb: 225, 230, 235;
+    --salt-color-background-rgb: 12, 12, 12;
+    --salt-color-sub-background-rgb: 25, 25, 25;
   }
 }

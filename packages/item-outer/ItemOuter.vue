@@ -22,12 +22,14 @@ const onClick = () => { emit('click') }
   
 <style scoped>
 .salt-item-outer {
+    color: var(--salt-text-style-main-color);
+    font-size: var(--salt-text-style-main-font-size);
+    line-height: var(--salt-text-style-main-line-height);
+
     width: 100%;
     padding: var(--salt-dimen-outer-vertical-padding) var(--salt-dimen-outer-horizontal-padding);
     color: var(--salt-color-highlight);
     font-weight: bold;
-    font-size: var(--salt-text-style-main-font-size);
-    line-height: var(--salt-text-style-main-line-height);
 
     transition: opacity 0.1s ease;
 }
