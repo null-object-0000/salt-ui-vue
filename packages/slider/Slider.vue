@@ -3,13 +3,12 @@
         <div class="bar" ref="element">
             <div class="thumb" :style="{ left: position + 'px' }" @mousedown="dragStart" @touchstart="dragStart">
             </div>
-            <div class="track" :style="{ width: position + 23 + 'px' }"></div>
+            <div class="track" :style="{ width: position + 22 + 'px' }"></div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-// FIXME: 左上角有部分背景色没有被完成覆盖
 import { ModelRef, onMounted, ref } from 'vue';
 
 const model = defineModel() as ModelRef<number>
@@ -164,7 +163,7 @@ const dragEnd = () => {
 <style scoped>
 .salt-slider {
     --salt-slider-thumb-size: 24px;
-    --salt-slider-track-height: 23px;
+    --salt-slider-track-height: 22px;
 }
 
 .salt-slider .bar {
@@ -182,6 +181,8 @@ const dragEnd = () => {
     border-radius: 50%;
     background-color: #ffffff;
     border: 1px solid rgba(140, 140, 140, 0.25);
+
+    top: -1px;
 }
 
 .salt-slider .track {
@@ -190,5 +191,7 @@ const dragEnd = () => {
     height: var(--salt-slider-track-height);
     padding-right: var(--salt-slider-track-height);
     border-radius: var(--salt-slider-track-height);
+
+    margin-left: 1px;
 }
 </style>

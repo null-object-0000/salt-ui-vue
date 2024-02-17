@@ -19,6 +19,6 @@ defineProps({
     line-height: var(--salt-text-style-sub-line-height);
 
     width: 100%;
-    padding: var(--salt-dimen-inner-horizontal-padding);
+    padding: 0 var(--salt-dimen-inner-horizontal-padding);
 }
 </style>

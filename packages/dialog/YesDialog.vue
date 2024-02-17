@@ -1,21 +1,30 @@
 <template>
-    <salt-basic-dialog v-model:open="open" class-name="salt-yes-dialog" :close-on-outside-click="closeOnOutsideClick"
-        :teleport="teleport">
-        <slat-dialog-title :text="title"></slat-dialog-title>
+    <salt-basic-dialog v-model:open="open" class="salt-yes-dialog" :close-on-outside-click="closeOnOutsideClick"
+        @open="emit('open')" @close="emit('close')">
+        <salt-item-out-spacer />
+        <slat-dialog-title :text="title" />
+        <salt-item-out-spacer />
 
-        <slot><salt-item-text :text="content"></salt-item-text></slot>
+        <slot>
+            <salt-item-text :text="content" />
+            <salt-item-out-half-spacer />
+            <!-- drawContent?.invoke() -->
+            <salt-item-out-half-spacer />
+        </slot>
 
         <form class="actions" method="dialog">
-            <salt-text-button class="confirm" @click="onConfirm" :text="text.toUpperCase()"></salt-text-button>
+            <salt-text-button class="confirm" @click="emit('confirm')" :text="text.toUpperCase()" />
         </form>
+
+        <salt-item-out-spacer />
     </salt-basic-dialog>
 </template>
   
 <script setup lang="ts">
 import { ModelRef } from 'vue';
-import { SlatDialogTitle, SaltBasicDialog, SaltItemText, SaltTextButton } from '../../packages'
+import { SlatDialogTitle, SaltBasicDialog, SaltItemText, SaltItemOutSpacer, SaltItemOutHalfSpacer, SaltTextButton } from '../../packages'
 
-const open = defineModel('open') as ModelRef<Boolean>;
+const open = defineModel('open') as ModelRef<boolean>;
 
 defineProps({
     title: {
@@ -38,21 +47,10 @@ defineProps({
         type: Boolean,
         required: false,
         default: true
-    },
-    /**
-     * 指定挂载的节点，等同于 Teleport 组件的 to 属性
-     */
-    teleport: {
-        type: String,
-        required: false
     }
 })
 
-const emit = defineEmits(['dismissRequest'])
-
-const onConfirm = () => {
-    emit('dismissRequest')
-}
+const emit = defineEmits(['open', 'close', 'confirm'])
 </script>
   
 <style>
@@ -63,5 +61,10 @@ const onConfirm = () => {
     width: 100%;
 
     padding: 0 var(--salt-dimen-outer-horizontal-padding);
+}
+
+.salt-yes-dialog .salt-basic-button.salt-text-button button {
+    position: relative;
+    z-index: 1;
 }
 </style>

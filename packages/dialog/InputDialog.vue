@@ -1,23 +1,28 @@
 <template>
-    <salt-basic-dialog v-model:open="open" class-name="salt-input-dialog" :close-on-outside-click="closeOnOutsideClick"
-        :teleport="teleport">
-        <slat-dialog-title :text="title"></slat-dialog-title>
+    <salt-basic-dialog v-model:open="open" class="salt-input-dialog" :close-on-outside-click="closeOnOutsideClick"
+        @open="emit('open')" @close="emit('close')">
+        <salt-item-out-spacer />
+        <slat-dialog-title :text="title" />
 
-        <salt-item-edit v-model="model" @change="onChange"></salt-item-edit>
+        <div class="salt-item-edit-container">
+            <salt-item-edit v-model="model" @change="onChange" />
+        </div>
 
         <form class="actions" method="dialog">
-            <salt-text-button class="cancel" @click="onCancel" text="CANCEL"></salt-text-button>
+            <salt-text-button class="cancel" @click="emit('cancel')" text="CANCEL" />
             <div class="spacer-width"></div>
-            <salt-text-button class="confirm" @click="onConfirm" text="CONFIRM"></salt-text-button>
+            <salt-text-button class="confirm" @click="emit('confirm')" text="CONFIRM" />
         </form>
+
+        <salt-item-out-spacer />
     </salt-basic-dialog>
 </template>
   
 <script setup lang="ts">
 import { ModelRef } from 'vue';
-import { SlatDialogTitle, SaltBasicDialog, SaltItemEdit, SaltTextButton } from '../../packages'
+import { SlatDialogTitle, SaltBasicDialog, SaltItemEdit, SaltItemOutSpacer, SaltTextButton } from '../../packages'
 
-const open = defineModel('open') as ModelRef<Boolean>;
+const open = defineModel('open') as ModelRef<boolean>;
 const model = defineModel() as ModelRef<String>;
 
 defineProps({
@@ -33,32 +38,20 @@ defineProps({
         required: false,
         default: true
     },
-    /**
-     * 指定挂载的节点，等同于 Teleport 组件的 to 属性
-     */
-    teleport: {
-        type: String,
-        required: false
-    }
 })
 
-const emit = defineEmits(['change', 'confirm', 'cancel', 'dismissRequest'])
+const emit = defineEmits(['change', 'open', 'close', 'confirm', 'cancel'])
 
 const onChange = (event: Event) => {
     emit('change', event)
 }
-
-const onCancel = () => {
-    emit('dismissRequest')
-    emit('cancel')
-}
-
-const onConfirm = () => {
-    emit('confirm')
-}
 </script>
   
 <style>
+.salt-input-dialog .salt-item-edit-container {
+    padding: 4px 0;
+}
+
 .salt-input-dialog .actions {
     display: flex;
     flex-direction: row;
@@ -70,6 +63,11 @@ const onConfirm = () => {
 
 .salt-input-dialog .spacer-width {
     width: var(--salt-dimen-outer-horizontal-padding);
+}
+
+.salt-input-dialog .salt-basic-button.salt-text-button button {
+    position: relative;
+    z-index: 1;
 }
 
 .salt-input-dialog .salt-basic-button.salt-text-button.cancel button {
