@@ -44,7 +44,7 @@ svg {
    * -------------------------------------------
    */
 
-  body {
+  :root {
     /** salt-colors **/
     --salt-color-highlight-rgb: 20, 120, 200;
     --salt-color-text-rgb: 235, 238, 241;
