@@ -3,9 +3,8 @@
         <slot></slot>
         <transition-group v-if="enabled">
             <template v-for="(val, i) in ripples">
-                <span class="salt_ripple-effect__ripple_item" v-bind:ref="'ripple-' + i" :key="'ripple' + i"
-                    v-if="val.show === true" :style="{ top: val.y + 'px', left: val.x + 'px', mixBlendMode }"
-                    v-on:animationend="rippleEnd(i)">
+                <span :class="rippleElementClass" v-bind:ref="'ripple-' + i" :key="'ripple' + i" v-if="val.show === true"
+                    :style="{ top: val.y + 'px', left: val.x + 'px', mixBlendMode }" v-on:animationend="rippleEnd(i)">
                 </span>
             </template>
         </transition-group>
@@ -17,6 +16,8 @@
 import { ref } from 'vue';
 import type * as CSS from 'csstype';
 
+const rippleElementClass = 'salt_ripple-effect__ripple_item';
+
 declare global {
     interface Window {
         SaltUI: {
@@ -24,17 +25,6 @@ declare global {
         }
     }
 }
-
-window.SaltUI = window.SaltUI || {
-    clearAllRippleAnimate: () => {
-        ripples.value = [];
-
-        const elements = document.getElementsByClassName('salt_ripple-effect__ripple_item')
-        for (let i = 0; i < elements.length; i++) {
-            elements[i].remove()
-        }
-    }
-};
 
 defineProps({
     enabled: {
@@ -72,7 +62,19 @@ const animateRipple = (e: MouseEvent) => {
 }
 
 const rippleEnd = function (i: number) {
-    ripples.value[i].show = false;
+    if (ripples.value && ripples.value[i] && ripples.value[i].show) ripples.value[i].show = false;
+}
+
+window.SaltUI = window.SaltUI || {
+    clearAllRippleAnimate: () => {
+        ripples.value = [];
+
+        let elements = document.getElementsByClassName(rippleElementClass) as HTMLCollectionOf<HTMLElement>;
+        while (elements.length > 0) {
+            elements[0].remove();
+            elements = document.getElementsByClassName(rippleElementClass) as HTMLCollectionOf<HTMLElement>;
+        }
+    }
 }
 </script>
 
