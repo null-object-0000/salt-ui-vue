@@ -13,7 +13,7 @@
         </div>
         <div class="spacer-height"></div>
         <salt-slider v-model="model" :enabled="enabled" :valueRange="valueRange" :steps="steps"
-            @change="(value: number, event: Event) => emit('change', value, event)" />
+            @change="(value, event) => emit('change', value, event)" />
     </div>
 </template>
   

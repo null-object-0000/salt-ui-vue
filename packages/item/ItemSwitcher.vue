@@ -12,7 +12,9 @@
                 <div class="sub" :style="{ color: subColor }">{{ sub }}</div>
             </div>
             <span class="spacer"></span>
-            <div class="switch-container"><salt-switch-button class="switch" :model-value="model" :enabled="enabled" />
+            <div class="switch-container">
+                <salt-switch-button class="switch" v-model="model" :enabled="enabled"
+                    @change="(value, event) => emit('change', value, event)" />
             </div>
         </div>
     </salt-ripple-effect>
@@ -58,9 +60,13 @@ const text = props.text
 const sub = props.sub
 const subColor = props.subColor
 
-const onClick = () => {
+const emit = defineEmits(['change'])
+
+const onClick = (event: MouseEvent) => {
     if (!enabled.value) return
-    model.value = !model.value
+    const newValue = model.value ? false : true
+    model.value = newValue
+    emit('change', newValue, event)
 }
 </script>
   

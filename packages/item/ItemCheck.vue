@@ -36,8 +36,9 @@ const emit = defineEmits(['change'])
 
 const onClick = (event: MouseEvent) => {
     if (!enabled.value) return
-    model.value = !model.value
-    emit('change', model.value, event)
+    const newValue = !model.value
+    model.value = newValue
+    emit('change', newValue, event)
 }
 </script>
   

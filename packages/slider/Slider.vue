@@ -135,7 +135,7 @@ const refreshPosition = (event: MouseEvent | TouchEvent) => {
 
     position.value = percentage2Position(percentage)
     model.value = percentage
-    emit('change', model.value, event)
+    emit('change', percentage, event)
 }
 
 const barClick = (event: MouseEvent | TouchEvent) => {

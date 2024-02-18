@@ -1,6 +1,6 @@
 <template>
     <div class="salt-switch-button" :class="[enabled ? 'enabled' : 'unenabled', model ? 'checked' : 'unchecked']"
-        @click="onClick">
+        @click.stop="onClick">
         <div class="handle"></div>
     </div>
 </template>
@@ -18,10 +18,13 @@ const props = defineProps({
 })
 
 const enabled = ref(props.enabled)
+const emit = defineEmits(['change'])
 
-const onClick = () => {
+const onClick = (event: MouseEvent) => {
     if (!enabled.value) return
-    model.value = !model.value
+    const newValue = model.value ? false : true
+    model.value = newValue
+    emit('change', model.value, event)
 }
 </script>
   

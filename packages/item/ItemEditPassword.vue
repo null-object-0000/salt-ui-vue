@@ -1,6 +1,6 @@
 <template>
     <salt-item-edit :type="hidden ? 'password' : 'text'" class="salt-item-edit-password" :model-value="model"
-        :readonly="readOnly" :hint="hint" @change="(value: string, event: Event) => emit('change', value, event)">
+        :readonly="readOnly" :hint="hint" @change="(value, event) => emit('change', value, event)">
         <salt-icon class="icon" :name="hidden ? 'closed-eye' : 'eye'" @click="hidden = !hidden"></salt-icon>
     </salt-item-edit>
 </template>
