@@ -91,8 +91,8 @@ window.SaltUI = window.SaltUI || {
 
 .salt_ripple-effect .salt_ripple-effect__ripple_item {
     background-color: var(--salt-color-text);
-    width: 1rem;
-    height: 1rem;
+    width: 2rem;
+    height: 2rem;
     position: absolute;
     border-radius: 50%;
     transform: translateX(-100%) translateY(-100%);
