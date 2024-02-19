@@ -13,9 +13,9 @@
         </slot>
 
         <form class="actions" method="dialog">
-            <salt-text-button class="cancel" @click="emit('cancel')" :text="cancelText.toUpperCase()" />
+            <salt-text-button class="cancel" @click="event => emit('cancel', event)" :text="cancelText.toUpperCase()" />
             <div class="spacer-width"></div>
-            <salt-text-button class="confirm" @click="emit('confirm')" :text="confirmText.toUpperCase()" />
+            <salt-text-button class="confirm" @click="event => emit('confirm', event)" :text="confirmText.toUpperCase()" />
         </form>
 
         <salt-item-out-spacer />

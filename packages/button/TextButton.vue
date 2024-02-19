@@ -1,7 +1,7 @@
 
 <template>
     <salt-basic-button class="salt-text-button" :content="text" :style="{ color: textColor }"
-        :backgroundColor="backgroundColor" @click="onClick">
+        :backgroundColor="backgroundColor" @click="event => emit('click', event)">
         <slot></slot>
     </salt-basic-button>
 </template>
@@ -25,10 +25,6 @@ defineProps({
 })
 
 const emit = defineEmits(['click'])
-
-const onClick = () => {
-    emit('click')
-}
 </script>
   
 <style>

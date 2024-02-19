@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-// FIXME: 当外层有圆角时，效果会超出圆角范围，需要修复
 import { ref } from 'vue';
 import type * as CSS from 'csstype';
 
@@ -82,7 +81,6 @@ window.SaltUI = window.SaltUI || {
 .salt_ripple-effect {
     width: 100%;
     overflow: hidden;
-    display: inline-block;
     position: relative;
     transition: box-shadow 150ms ease-out;
 }

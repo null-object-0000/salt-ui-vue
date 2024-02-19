@@ -13,7 +13,7 @@
         </slot>
 
         <form class="actions" method="dialog">
-            <salt-text-button class="confirm" @click="emit('confirm')" :text="text.toUpperCase()" />
+            <salt-text-button class="confirm" @click="event => emit('confirm', event)" :text="text.toUpperCase()" />
         </form>
 
         <salt-item-out-spacer />

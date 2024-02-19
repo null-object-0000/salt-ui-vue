@@ -1,5 +1,5 @@
 <template>
-    <div class="salt-item-outer" :style="{ color }" @click="onClick">
+    <div class="salt-item-outer" :style="{ color }" @click="event => emit('click', event)">
         <slot>{{ text }}</slot>
     </div>
 </template>
@@ -17,7 +17,6 @@ defineProps({
 })
 
 const emit = defineEmits(['click'])
-const onClick = () => { emit('click') }
 </script>
   
 <style scoped>

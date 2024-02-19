@@ -5,7 +5,7 @@
         <slat-dialog-title :text="title" />
 
         <div class="salt-item-edit-container">
-            <salt-item-edit v-model="model" @change="onChange" />
+            <salt-item-edit v-model="model" @change="event => emit('change', event)" />
         </div>
 
         <form class="actions" method="dialog">
@@ -41,10 +41,6 @@ defineProps({
 })
 
 const emit = defineEmits(['change', 'open', 'close', 'confirm', 'cancel'])
-
-const onChange = (event: Event) => {
-    emit('change', event)
-}
 </script>
   
 <style>
