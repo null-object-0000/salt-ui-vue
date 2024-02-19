@@ -2,14 +2,18 @@
     <salt-basic-dialog v-model:open="open" class="salt-yes-dialog" :close-on-outside-click="closeOnOutsideClick"
         @open="emit('open')" @close="emit('close')">
         <salt-item-out-spacer />
-        <slat-dialog-title :text="title" />
-        <salt-item-out-spacer />
+        <template v-if="title && title.length > 0">
+            <slat-dialog-title :text="title" />
+            <salt-item-out-spacer />
+        </template>
 
         <slot>
-            <salt-item-text :text="content" />
-            <salt-item-out-half-spacer />
-            <!-- drawContent?.invoke() -->
-            <salt-item-out-half-spacer />
+            <template v-if="content && content.length > 0">
+                <salt-item-text :text="content" />
+                <salt-item-out-half-spacer />
+                <!-- drawContent?.invoke() -->
+                <salt-item-out-half-spacer />
+            </template>
         </slot>
 
         <form class="actions" method="dialog">
