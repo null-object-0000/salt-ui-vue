@@ -13,7 +13,7 @@
 </template>
   
 <script setup lang="ts">
-import { ModelRef, ref } from 'vue';
+import { ModelRef, toRefs } from 'vue';
 import { SaltIcon, SaltRippleEffect } from '../../packages';
 
 const model = defineModel() as ModelRef<boolean>
@@ -30,14 +30,15 @@ const props = defineProps({
     },
 })
 
-const enabled = ref(props.enabled)
+const { enabled } = toRefs(props)
 
 const emit = defineEmits(['change'])
 
 const onClick = (event: MouseEvent) => {
     if (!enabled.value) return
-    model.value = !model.value
-    emit('change', model.value, event)
+    const newValue = !model.value
+    model.value = newValue
+    emit('change', newValue, event)
 }
 </script>
   

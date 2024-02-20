@@ -1,12 +1,12 @@
 <template>
     <div class="salt-switch-button" :class="[enabled ? 'enabled' : 'unenabled', model ? 'checked' : 'unchecked']"
-        @click="onClick">
+        @click.stop="onClick">
         <div class="handle"></div>
     </div>
 </template>
   
 <script setup lang="ts">
-import { ModelRef, ref } from 'vue';
+import { ModelRef, toRefs } from 'vue';
 
 const model = defineModel() as ModelRef<boolean>
 const props = defineProps({
@@ -17,11 +17,14 @@ const props = defineProps({
     }
 })
 
-const enabled = ref(props.enabled)
+const { enabled } = toRefs(props)
+const emit = defineEmits(['change'])
 
-const onClick = () => {
+const onClick = (event: MouseEvent) => {
     if (!enabled.value) return
-    model.value = !model.value
+    const newValue = model.value ? false : true
+    model.value = newValue
+    emit('change', newValue, event)
 }
 </script>
   

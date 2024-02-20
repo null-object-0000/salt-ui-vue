@@ -13,12 +13,12 @@
         </div>
         <div class="spacer-height"></div>
         <salt-slider v-model="model" :enabled="enabled" :valueRange="valueRange" :steps="steps"
-            @change="(value: number, event: Event) => emit('change', value, event)" />
+            @change="(value, event) => emit('change', value, event)" />
     </div>
 </template>
   
 <script setup lang="ts">
-import { ModelRef, ref } from 'vue';
+import { ModelRef, toRefs } from 'vue';
 import { SaltIcon, SaltSlider } from '../../packages';
 
 const model = defineModel() as ModelRef<Number>
@@ -57,7 +57,7 @@ const props = defineProps({
     }
 })
 
-const enabled = ref(props.enabled)
+const { enabled } = toRefs(props)
 
 const emit = defineEmits(['change'])
 </script>

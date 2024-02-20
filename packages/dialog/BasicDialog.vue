@@ -7,7 +7,7 @@
 </template>
   
 <script setup lang="ts">
-import { ModelRef, ref, watch, onMounted } from 'vue';
+import { ModelRef, ref, watch, onMounted, toRefs } from 'vue';
 
 const open = defineModel('open') as ModelRef<boolean>;
 
@@ -30,8 +30,7 @@ const props = defineProps({
     },
 })
 
-const overlay = props.overlay
-const closeOnOutsideClick = props.closeOnOutsideClick
+const { overlay, closeOnOutsideClick } = toRefs(props)
 
 const dialog = ref<HTMLDialogElement | null>(null);
 const content = ref<HTMLDivElement | null>(null);
@@ -78,6 +77,7 @@ watch(open, value => value ? show() : close())
     justify-content: center;
     align-items: center;
 
+    transform: translateY(5%);
     transition: transform 0.3s ease;
 }
 
@@ -87,7 +87,7 @@ watch(open, value => value ? show() : close())
     height: 100%;
     max-height: 100%;
 
-    transform: translateY(-10%);
+    transform: translateY(0);
 }
 
 .salt-basic-dialog::backdrop {

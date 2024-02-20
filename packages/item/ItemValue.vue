@@ -7,8 +7,6 @@
 </template>
   
 <script setup lang="ts">
-// FIXME: sub 超长时会挤压 text 并且不会换行
-
 defineProps({
     text: {
         type: String,
@@ -37,7 +35,7 @@ defineProps({
     font-size: var(--salt-text-style-main-font-size);
     line-height: var(--salt-text-style-main-line-height);
 
-    flex: 1;
+    flex: 50%;
 }
 
 .salt-item-value .spacer {
@@ -53,6 +51,6 @@ defineProps({
     font-size: 15px;
     text-align: end;
 
-    flex: 1;
+    flex: 50%;
 }
 </style>
