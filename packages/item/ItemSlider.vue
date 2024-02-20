@@ -18,7 +18,7 @@
 </template>
   
 <script setup lang="ts">
-import { ModelRef, ref } from 'vue';
+import { ModelRef, toRefs } from 'vue';
 import { SaltIcon, SaltSlider } from '../../packages';
 
 const model = defineModel() as ModelRef<Number>
@@ -57,7 +57,7 @@ const props = defineProps({
     }
 })
 
-const enabled = ref(props.enabled)
+const { enabled } = toRefs(props)
 
 const emit = defineEmits(['change'])
 </script>

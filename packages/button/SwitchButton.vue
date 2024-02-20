@@ -6,7 +6,7 @@
 </template>
   
 <script setup lang="ts">
-import { ModelRef, ref } from 'vue';
+import { ModelRef, toRefs } from 'vue';
 
 const model = defineModel() as ModelRef<boolean>
 const props = defineProps({
@@ -17,7 +17,7 @@ const props = defineProps({
     }
 })
 
-const enabled = ref(props.enabled)
+const { enabled } = toRefs(props)
 const emit = defineEmits(['change'])
 
 const onClick = (event: MouseEvent) => {

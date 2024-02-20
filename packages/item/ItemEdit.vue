@@ -12,7 +12,7 @@
 </template>
   
 <script setup lang="ts">
-import { ModelRef, ref } from 'vue';
+import { ModelRef, ref, toRefs } from 'vue';
 
 const model = defineModel() as ModelRef<string>
 
@@ -49,7 +49,7 @@ const props = defineProps({
     }
 })
 
-const enabledFixInputPosition = props.enabledFixInputPosition
+const { enabledFixInputPosition } = toRefs(props)
 
 const emit = defineEmits(['change'])
 

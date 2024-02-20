@@ -7,7 +7,7 @@
 </template>
   
 <script setup lang="ts">
-import { ModelRef, ref, watch, onMounted } from 'vue';
+import { ModelRef, ref, watch, onMounted, toRefs } from 'vue';
 
 const open = defineModel('open') as ModelRef<boolean>;
 
@@ -30,8 +30,7 @@ const props = defineProps({
     },
 })
 
-const overlay = props.overlay
-const closeOnOutsideClick = props.closeOnOutsideClick
+const { overlay, closeOnOutsideClick } = toRefs(props)
 
 const dialog = ref<HTMLDialogElement | null>(null);
 const content = ref<HTMLDivElement | null>(null);

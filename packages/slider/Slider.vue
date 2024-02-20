@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { ModelRef, onMounted, ref } from 'vue';
+import { ModelRef, onMounted, ref, toRefs } from 'vue';
 
 const model = defineModel() as ModelRef<number>
 
@@ -30,9 +30,7 @@ const props = defineProps({
     }
 })
 
-const enabled = ref(props.enabled)
-const valueRange = ref(props.valueRange)
-const steps = ref(props.steps)
+const { enabled, valueRange, steps } = toRefs(props)
 
 const emit = defineEmits(['change'])
 

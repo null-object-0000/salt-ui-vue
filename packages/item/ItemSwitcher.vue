@@ -21,7 +21,7 @@
 </template>
   
 <script setup lang="ts">
-import { ModelRef, ref } from 'vue';
+import { ModelRef, toRefs } from 'vue';
 import { SaltSwitchButton, SaltIcon, SaltRippleEffect } from '../../packages';
 
 const model = defineModel() as ModelRef<boolean>
@@ -54,11 +54,7 @@ const props = defineProps({
     }
 })
 
-const enabled = ref(props.enabled)
-const iconColor = props.iconColor
-const text = props.text
-const sub = props.sub
-const subColor = props.subColor
+const { enabled } = toRefs(props)
 
 const emit = defineEmits(['change'])
 
