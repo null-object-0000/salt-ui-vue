@@ -2,18 +2,22 @@
     <salt-ripple-effect :enabled="enabled" mix-blend-mode="exclusion"
         @click="(event: MouseEvent) => { if (enabled) emit('click', event) }">
         <div class="salt-item" :class="[enabled ? 'enabled' : 'unenabled']">
-            <div v-if="iconPainter || $slots.icon" class="icon-container">
-                <slot name="icon">
+            <div v-if="iconPainter || $slots.start" class="icon-container">
+                <slot name="start">
                     <salt-icon class="icon" :name="iconPainter" :style="{ color: iconColor }"></salt-icon>
                 </slot>
                 <span class="spacer-width"></span>
             </div>
             <div class="row">
-                <span class="text">{{ text }} </span>
-                <div class="sub" :style="{ color: subColor }">{{ sub }}</div>
+                <span class="text">
+                    <slot name="text">{{ text }}</slot>
+                </span>
+                <div class="sub" :style="{ color: subColor }">
+                    <slot name="sub">{{ sub }}</slot>
+                </div>
             </div>
             <span class="spacer-width"></span>
-            <salt-icon name="chevron-right"></salt-icon>
+            <slot name="end"><salt-icon name="chevron-right"></salt-icon></slot>
         </div>
     </salt-ripple-effect>
 </template>
